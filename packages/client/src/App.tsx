@@ -1,10 +1,10 @@
 import "./App.css";
-import ChatPage from "../components/main";
+import Main from "../components/main";
 
 const App = () => {
   return (
     <div className="app-container">
-      <ChatPage/>
+      <Main/>
     </div>
   );
 };
