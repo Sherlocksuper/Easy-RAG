@@ -14,14 +14,16 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
     "nodemon": "^2.0.15",
     "ts-node": "^10.9.2",
-    "typescript": "~5.6.3",
-    "@types/express": "^5.0.0",
-    "@types/node": "^22.10.2"
+    "typescript": "~5.6.3"
   },
   "dependencies": {
+    "@baiducloud/qianfan": "^0.2.2",
     "@clients/public": "workspace:*",
+    "dotenv": "^16.4.7",
     "express": "^4.17.2"
   }
 }
