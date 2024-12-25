@@ -67,9 +67,6 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@clients/public':
-        specifier: workspace:*
-        version: link:../public
       '@eslint/js':
         specifier: ^9.15.0
         version: 9.16.0
