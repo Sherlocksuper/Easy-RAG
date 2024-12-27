@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, Repository } from 'typeorm';
-import { Orm } from './index.ts';
+import { Orm, vectorRepository } from './index.ts';
 
 @Entity()
 export class Vector {
@@ -23,7 +23,6 @@ export class Vector {
     features: number[];
 }
 
-const vectorRepository = Orm.getRepository(Vector);
 
 // 创建一个新的 Vector
 async function createVector(text: string, source: string, modelType: string, token: string, features: number[]): Promise<Vector | null> {

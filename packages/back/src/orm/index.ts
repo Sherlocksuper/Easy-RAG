@@ -20,3 +20,7 @@ export const Orm = new DataSource({
     migrations: [],
     subscribers: [],
 });
+
+export const chatRepository = Orm.getRepository(Chat)
+export const messageRepository = Orm.getRepository(Message);
+export const vectorRepository = Orm.getRepository(Vector);

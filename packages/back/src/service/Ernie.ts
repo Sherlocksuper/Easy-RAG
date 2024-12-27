@@ -1,7 +1,7 @@
-import {ernieInstance} from "../models/index.js";
-import {IRawMessage} from "node_modules/@clients/public/index.ts";
+import { ernieInstance } from "../models/index.js";
+import { IRawMessage } from "node_modules/@clients/public/index.ts";
 import Ernie from "../models/Ernie.js";
-import {IModel} from "@clients/index";
+import { IModel } from "@clients/index";
 
 export const getChatModelInstanceByType = (type: string) => {
   let instance: IModel = undefined
@@ -10,7 +10,7 @@ export const getChatModelInstanceByType = (type: string) => {
   }
 
   if (!instance) {
-    throw new Error(`No model found for type: ${type}`)
+    return ernieInstance
   }
   return instance.updateChatModel(type)
 }
@@ -22,7 +22,7 @@ export const getEmbeddingModelInstanceByType = (type: string) => {
   }
 
   if (!instance) {
-    throw new Error(`No model found for type: ${type}`)
+    return ernieInstance
   }
   return instance.updateEmbeddingModel(type)
 }
@@ -33,8 +33,9 @@ export const getMessageAnswer = (message: IRawMessage) => {
   return instance.getMessageAnswer(message.message)
 }
 
-export const getEmbeddingAnswer = (message: IRawMessage) => {
-
+export const getEmbeddingAnswer = async (message: IRawMessage, texts: string[]) => {
+  const instance = getEmbeddingModelInstanceByType(message.modelType)
+  return await instance.getEmbeddingAnswer(texts)
 }
 
 

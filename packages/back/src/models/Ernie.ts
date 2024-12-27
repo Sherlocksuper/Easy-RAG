@@ -1,6 +1,6 @@
-import {IModel} from "@clients/index";
-import {ChatCompletion} from "@baiducloud/qianfan";
-import {ISystemEnv, systemEnv} from "../../config.js";
+import { IModel } from "@clients/index";
+import { ChatCompletion, Embedding } from "@baiducloud/qianfan";
+import { ISystemEnv, systemEnv } from "../../config.js";
 
 enum ErnieChildType {
   ERNIE_4_0_8K = 'ERNIE-4.0-8K',
@@ -26,6 +26,7 @@ enum ErnieEmbeddingType {
 
 class Ernie implements IModel {
   client = undefined;
+  embeddingClient = undefined
   selectChatModel = ErnieChildType.ERNIE_4_0_8K;
   selectEmbeddingModel = ErnieEmbeddingType.Embedding_V1;
 
@@ -38,6 +39,10 @@ class Ernie implements IModel {
 
   constructor(systemEnv: ISystemEnv) {
     this.client = new ChatCompletion({
+      QIANFAN_ACCESS_KEY: systemEnv.QIANFAN_ACCESS_KEY,
+      QIANFAN_SECRET_KEY: systemEnv.QIANFAN_SECRET_KEY,
+    })
+    this.embeddingClient = new Embedding({
       QIANFAN_ACCESS_KEY: systemEnv.QIANFAN_ACCESS_KEY,
       QIANFAN_SECRET_KEY: systemEnv.QIANFAN_SECRET_KEY,
     })
@@ -63,6 +68,15 @@ class Ernie implements IModel {
       ],
     }, 'ERNIE-4.0-8K');
     console.log(resp)
+  }
+
+  async getEmbeddingAnswer(texts: string[]) {
+    const resp = await this.embeddingClient.embedding({
+      input: texts,
+    }, 'Embedding-V1');
+    console.log(resp)
+    const rs = resp;
+    return rs
   }
 }
 

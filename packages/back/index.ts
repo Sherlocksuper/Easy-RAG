@@ -2,7 +2,7 @@ import express from 'express'
 import { systemEnv } from "./config.ts";
 import { ernieInstance } from "./src/models/index.js";
 import { IRawMessage } from "node_modules/@clients/public/index.ts";
-import { getMessageAnswer } from "./src/service/Ernie.js";
+import { getEmbeddingAnswer, getMessageAnswer } from "./src/service/Ernie.js";
 import { Orm } from 'src/orm/index.ts';
 
 const app = express()
@@ -31,6 +31,19 @@ app.post('/message', (req, res) => {
   res.write(JSON.stringify({
     answer: answer
   }))
+})
+
+app.get('/vector', async (req, res) => {
+  // 流式传输
+  const answer = await getEmbeddingAnswer({
+    message: ":123",
+    modelType: "Ernie"
+  },["message1","message2"])
+
+  res.write(JSON.stringify({
+    answer: answer
+  }))
+  res.end()
 })
 
 app.listen(systemEnv.PORT, () => {

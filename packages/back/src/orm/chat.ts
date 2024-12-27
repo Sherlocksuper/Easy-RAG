@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, getRepository } from "typeorm"
-import { Orm } from "./index.ts";
+import { chatRepository, Orm } from "./index.ts";
 
 
 @Entity()
@@ -12,7 +12,6 @@ export class Chat {
 }
 
 
-const chatRepository = Orm.getRepository(Chat)
 
 // Start of Selection
 // 创建一个新的 Chat 实体并保存

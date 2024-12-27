@@ -1,7 +1,7 @@
 // packages/back/src/orm/messages.ts
 
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Repository } from 'typeorm';
-import { Orm } from './index.ts';  // Assuming Orm is the TypeORM data source
+import { messageRepository, Orm } from './index.ts';  // Assuming Orm is the TypeORM data source
 
 @Entity('messages')
 export class Message {
@@ -21,7 +21,6 @@ export class Message {
     createdAt: Date;
 }
 
-const messageRepository = Orm.getRepository(Message);
 
 // 创建一个新的 Message
 async function createMessage(chatId: number, text: string, token: string): Promise<Message | null> {
