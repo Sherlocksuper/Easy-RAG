@@ -1,6 +1,6 @@
-import dotenv from "dotenv";
 import {systemEnv} from "../../config.js";
 import Ernie from "./Ernie.js";
+import dotenv from "dotenv"
 
 dotenv.config()
 

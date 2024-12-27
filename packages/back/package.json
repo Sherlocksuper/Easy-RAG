@@ -28,6 +28,8 @@
     "@clients/public": "workspace:*",
     "dotenv": "^16.4.7",
     "express": "^4.17.2",
-    "tsx": "^4.19.2"
+    "mysql": "^2.18.1",
+    "tsx": "^4.19.2",
+    "typeorm": "^0.3.20"
   }
 }

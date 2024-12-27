@@ -3,6 +3,8 @@
     "target": "ES2020",
     "module": "NodeNext",
     "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "moduleResolution": "node16",
     "allowImportingTsExtensions": true,
